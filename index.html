@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adding Symbols to the String</title>
+</head>
+<body>
+    <br />
+    <!--Field for entering string-->
+    <label for="string">Введіть строку:</label>
+    <input type="text" id="string" value="abc" /><br /><br />
+
+    <!--Field for entering length of the string-->
+    <label for="length">Введіть довжину строки:</label>
+    <input type="number" id="length" value="10" min="0" /><br /><br />
+
+    <!--Field for entering symbol which is should be added to the string-->
+    <label for="symbol">Введіть символ, який треба додати:</label>
+    <input type="text" id="symbol" value="*" /><br /><br />
+
+    <!-- Radio buttons to select where symbols will be added in the beginning or in the end -->
+    <label for="trueRadio">True</label>
+    <input type="radio" id="trueRadio" name="direction" value="true" checked /> </br>
+
+    <label for="falseRadio">False</label>
+    <input type="radio" id="falseRadio" name="direction" value="false" /> </br> </br>
+
+    <!--Include the script file-->
+    <script src="padStartEnd.js"></script>
+
+    <!--Button which is call Function for adding symbols to the string-->
+    <button onclick="handlePadClick()">Додати символ до строки</button>
+
+    <!--When user click the "Додати символ до строки" button, the result of adding symbols to the string will be displayed in the output div -->
+    <div id="output"></div>
+
+    <script>
+        // Function for updating selections
+        function updateValues() {
+            // Get the value of the selected radio button
+            let direction = document.querySelector('input[name="direction"]:checked').value;
+            // Output the selected value
+            console.log("Selected value:", direction);
+        }
+
+        function handlePadClick() {
+            // Get the string, length, symbol, and direction values from the input fields
+            let string = document.getElementById("string").value;
+            let length = parseInt(document.getElementById("length").value);
+            let symbol = document.getElementById("symbol").value;
+            let direction = document.querySelector('input[name="direction"]:checked').value;
+            padStartEnd(string, length, symbol, direction);
+        }
+    </script>
+</body>
+</html>
